@@ -67,7 +67,7 @@ public class MyRunner implements CommandLineRunner {
             if(tech instanceof Technicien) {
             ((Technicien)tech).getGrade();
         }
-        */
+
 
         Employe t = employeRepository.findByMatricule("T02141");
         Technicien technicien = (Technicien)t;
@@ -84,11 +84,12 @@ public class MyRunner implements CommandLineRunner {
                 System.out.println(te);
                 System.out.println(te.getManager().getDateEmbauche());
             }
+        */
 
         //PageRequest e3 = new PageRequest(1, 5, Sort.Direction.DESC, "matricule");
 
         //Employe e4 = employeRepository.findByMatricule("C00004");
-        /*
+
         Page<Employe> e5 = employeRepository.findByNomIgnoreCase("bARre", new PageRequest(0, 5));
         for (Employe employe : e5) {
             System.out.println(employe);
