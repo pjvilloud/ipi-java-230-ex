@@ -1,13 +1,13 @@
 package com.ipiecoles.java.java230.model;
+
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
-import java.util.Objects;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-//@Table(name = "employe")
 public abstract class Employe {
 
 	@Id

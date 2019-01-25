@@ -22,7 +22,7 @@ public class TestUtils {
     public static final String LIST = "java.util.List";
     public static final String LONG = "java.lang.Long";
     public static final String PAGE = "org.springframework.data.domain.Page";
-    public static final String PAGEABLE = "org.springframework.data.domain.Pageable";
+    public static final String PAGEABLE = "org.springframework.data.domain.Pageablee";
 
     public static Object callMethod(String classe, String methodName) throws Exception {
         Method method = getClasse(classe).getMethod(methodName);

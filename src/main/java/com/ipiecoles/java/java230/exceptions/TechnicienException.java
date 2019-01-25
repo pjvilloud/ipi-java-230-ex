@@ -13,7 +13,6 @@ public class TechnicienException extends Exception {
 
     public TechnicienException(String message, Technicien technicien, Object valeurIncorrecte) {
         super(message + valeurIncorrecte + ", technicien : " + technicien.toString());
-        System.out.println(this.getMessage());
     }
 }
 

@@ -3,7 +3,8 @@ package com.ipiecoles.java.java230.model;
 import com.ipiecoles.java.java230.exceptions.TechnicienException;
 import org.joda.time.LocalDate;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,14 +13,14 @@ import java.util.stream.Collectors;
 @Entity
 public class Manager extends Employe {
 
-	@OneToMany(mappedBy = "manager", fetch = FetchType.LAZY) // Pour ne pas avoir tout les Technicien si on ne veut que le Manager
+	@OneToMany(mappedBy = "manager")
 	private Set<Technicien> equipe = new HashSet();
 
 	public Manager(){
 
 	}
 
-	public Manager(String nom, String prenom, String matricule, LocalDate dateEmbauche, Double salaire, HashSet<Technicien> equipe) {
+	public Manager(String nom, String prenom, String matricule, LocalDate dateEmbauche, Double salaire) {
 		super(nom, prenom, matricule, dateEmbauche, salaire);
 		this.equipe = equipe;
 	}
