@@ -106,7 +106,7 @@ public class MyRunner implements CommandLineRunner {
     }
 
     /**
-     *
+     * Methode qui vérifie que le nombre des champs contenues dans la ligne correspond bien au nombre des champs du type d'employé
      * @param ligne
      * @param type
      * @param NbChamps
@@ -120,7 +120,7 @@ public class MyRunner implements CommandLineRunner {
     }
 
     /**
-     *
+     * Méthode qui vérifie que la matricule respecte bien l'expression régulière regex prédéfinie
      * @param ligne
      * @param index
      * @param regex
@@ -135,7 +135,8 @@ public class MyRunner implements CommandLineRunner {
     }
 
     /**
-     *
+     * Méthode qui retourne un Double représenté par un String ou lève un NullPointerException ou NumberFormatException
+     * si le String ne peut pas être parsé
      * @param ligne
      * @param index
      * @return
@@ -156,7 +157,8 @@ public class MyRunner implements CommandLineRunner {
     }
 
     /**
-     *
+     * Méthode qui retourne un Integer représenté par un String ou lève un NullPointerException ou NumberFormatException
+     * si le String ne peut pas être parsé
      * @param ligne
      * @param index
      * @return
@@ -176,7 +178,8 @@ public class MyRunner implements CommandLineRunner {
     }
 
     /**
-     *
+     * Méthode qui retourne un LocalDate représenté par une Date du format "dd/MM/yyyy" ou lève une exception
+     * sie la Date n'est pas au bon format
      * @param ligne
      * @return
      * @throws IllegalArgumentException
@@ -193,7 +196,7 @@ public class MyRunner implements CommandLineRunner {
     }
 
     /**
-     *
+     * Méthode qui cherche si le matricule d'un Manager est présente soit dans le fichier µ.csv soit en base de données
      * @param ligne
      * @throws BatchException
      */
