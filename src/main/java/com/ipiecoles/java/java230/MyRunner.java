@@ -132,13 +132,14 @@ public class MyRunner implements CommandLineRunner {
     }
 
     /**
-     * Méthode qui retourne un Double représenté par un String ou lève un NullPointerException ou NumberFormatException
+     * Méthode qui retourne un Double représenté par un String ou lève une exception
      * si le String ne peut pas être parsé
      * @param ligne
      * @param index
      * @return
+     * @throws BatchException
      */
-    private Double StringToDouble(String ligne, Integer index) throws NumberFormatException {
+    private Double StringToDouble(String ligne, Integer index) throws BatchException {
         String[] champs = ligne.split(",");
         String monDouble = champs[index];
         //if(Double.valueOf(monSalaire))
@@ -146,31 +147,30 @@ public class MyRunner implements CommandLineRunner {
             return Double.parseDouble(monDouble);
         } catch (NumberFormatException e) {
             if (index == 4)
-                logger.error(monDouble+" n'est pas un nombre valide pour un salaire => "+ligne);
+                throw new BatchException(monDouble+" n'est pas un nombre valide pour un salaire => "+ligne);
             else
-                logger.error("Le chiffre d'affaire du commercial est incorrect : "+monDouble+" => "+ligne);
-            return null;
+                throw new BatchException("Le chiffre d'affaire du commercial est incorrect : " + monDouble + " => " + ligne);
         }
     }
 
     /**
-     * Méthode qui retourne un Integer représenté par un String ou lève un NumberFormatException
+     * Méthode qui retourne un Integer représenté par un String ou lève une exception
      * si le String ne peut pas être parsé
      * @param ligne
      * @param index
      * @return
+     * @throws BatchException
      */
-    private Integer StringToInteger(String ligne, Integer index) throws NumberFormatException {
+    private Integer StringToInteger(String ligne, Integer index) throws BatchException {
         String[] champs = ligne.split(",");
         String monInteger = champs[index];
         try {
             return Integer.parseInt(monInteger);
         } catch (NumberFormatException e) {
             if (index == 5)
-                logger.error("Le grade du technicien est incorrect : "+monInteger+" => "+ligne);
+                throw new BatchException("Le grade du technicien est incorrect : "+monInteger+" => "+ligne);
             else
-                logger.error("La performance du commercial est incorrecte : "+monInteger+" => "+ligne);
-            return null;
+                throw new BatchException("La performance du commercial est incorrecte : "+monInteger+" => "+ligne);
         }
     }
 
@@ -179,16 +179,15 @@ public class MyRunner implements CommandLineRunner {
      * si la Date n'est pas au bon format
      * @param ligne
      * @return
-     * @throws IllegalArgumentException
+     * @throws BatchException
      */
-    private LocalDate dateToLocalDate(String ligne) throws IllegalArgumentException {
+    private LocalDate dateToLocalDate(String ligne) throws BatchException {
         String[] champs = ligne.split(",");
         String monDate = champs[3];
         try {
             return DateTimeFormat.forPattern("dd/MM/yyyy").parseLocalDate(monDate);
         } catch (Exception e){
-            logger.error(monDate+" ne respecte pas le format de date dd/MM/yyyy => "+ligne);
-            return null;
+            throw new BatchException(monDate+" ne respecte pas le format de date dd/MM/yyyy => "+ligne);
         }
     }
 
@@ -229,10 +228,8 @@ public class MyRunner implements CommandLineRunner {
         Integer performance = StringToInteger(ligneCommercial, 6);
 
         // sauvegarder un nouveau commercial dans la BDD
-        if (dateEmbauche != null && salaire != null  && caAnnuel != null  && performance != null ) {
-            Commercial c = new Commercial(champs[1], champs[2], champs[0], dateEmbauche, salaire, caAnnuel, performance);
-            employeRepository.save(c);
-        }
+        Commercial c = new Commercial(champs[1], champs[2], champs[0], dateEmbauche, salaire, caAnnuel, performance);
+        employeRepository.save(c);
     }
 
     /**
@@ -248,10 +245,8 @@ public class MyRunner implements CommandLineRunner {
         Double salaire = StringToDouble(ligneManager, 4);
 
         // sauvegarder un nouveau manager dans la BDD
-        if (dateEmbauche != null && salaire != null) {
-            Manager m = new Manager(champs[1], champs[2], champs[0], dateEmbauche, salaire);
-            employeRepository.save(m);
-        }
+        Manager m = new Manager(champs[1], champs[2], champs[0], dateEmbauche, salaire);
+        employeRepository.save(m);
     }
 
     /**
@@ -278,10 +273,7 @@ public class MyRunner implements CommandLineRunner {
         String manager_matr = champs[6];
 
         // sauvegarder un nouveau technicien dans la BDD
-        if (dateEmbauche != null && salaire != null && grade != null) {
-            Technicien t = new Technicien(champs[1], champs[2], champs[0], dateEmbauche, salaire, grade);
-            employeRepository.save(t);
-        }
+        Technicien t = new Technicien(champs[1], champs[2], champs[0], dateEmbauche, salaire, grade);
+        employeRepository.save(t);
     }
-
 }
