@@ -1,4 +1,4 @@
- ## Classe Employe
+ ## Classe Employe toto
  1. Annoter la classe Employe en tant qu'entité pour qu'elle puisse récupérer les données de la table Employe
  2. Ajouter un champ id de type Long et l'annoter de manière a ce qu'il puisse gérer les identifiants générés automatiquement par MySQL.
 
