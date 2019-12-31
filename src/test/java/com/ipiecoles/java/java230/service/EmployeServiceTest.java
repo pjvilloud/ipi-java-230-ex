@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -74,21 +75,20 @@ public class EmployeServiceTest {
         Assertions.assertThat(c.getId()).isNotNull();
 
         //TearDown
-        employeRepository.delete(c.getId());
+        employeRepository.deleteById(c.getId());
 
     }
 
     @Test
     public void exo305testDeleteEmploye(){
         //Given
-        Commercial c = new Commercial("test", "test", "test", LocalDate.now(), 500d, 0d);
-        c = employeRepository.save(c);
+        final Commercial c = employeRepository.save(new Commercial("test", "test", "test", LocalDate.now(), 500d, 0d));
 
         //When
         employeService.deleteEmploye(c.getId());
 
         //Then
-        Assertions.assertThat(employeService.findById(c.getId())).isNull();
+        Assertions.assertThatThrownBy(() -> { employeService.findById(c.getId()); }).isInstanceOf(EntityNotFoundException.class);
 
     }
 
