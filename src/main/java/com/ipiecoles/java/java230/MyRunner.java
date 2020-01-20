@@ -34,7 +34,7 @@ public class MyRunner implements CommandLineRunner {
     @Autowired
     private ManagerRepository managerRepository;
 
-    private List<Employe> employes = new ArrayList<>();
+    private List<Employe> employes = new ArrayList<Employe>();
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

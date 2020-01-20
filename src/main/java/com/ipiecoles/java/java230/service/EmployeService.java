@@ -12,7 +12,7 @@ public class EmployeService {
     private EmployeRepository employeRepository;
 
     public Employe findById(Long id){
-        return employeRepository.findOne(id);
+        return employeRepository.findById(id).get();
     }
 
     public Long countAllEmploye() {
@@ -20,7 +20,7 @@ public class EmployeService {
     }
 
     public void deleteEmploye(Long id){
-        employeRepository.delete(id);
+        employeRepository.deleteById(id);
     }
 
     public Employe creerEmploye(Employe e) {
