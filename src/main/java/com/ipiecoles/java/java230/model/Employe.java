@@ -165,3 +165,4 @@ public abstract class Employe {
 		return Objects.hash(nom, prenom, matricule, dateEmbauche, salaire);
 	}
 }
+
