@@ -74,7 +74,7 @@ public class EmployeServiceTest {
         Assertions.assertThat(c.getId()).isNotNull();
 
         //TearDown
-        employeRepository.delete(c.getId());
+        employeRepository.deleteById(c.getId());
 
     }
 
