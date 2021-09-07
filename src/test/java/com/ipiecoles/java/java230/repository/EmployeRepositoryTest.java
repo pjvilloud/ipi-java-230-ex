@@ -109,7 +109,7 @@ public class EmployeRepositoryTest {
             Assertions.assertThat(m.getAnnotation(Query.class).value()).isEqualToIgnoringCase("SELECT * FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)");
             Assertions.assertThat(m.getAnnotation(Query.class).nativeQuery()).isTrue();
         } catch (ClassNotFoundException e){
-            Method m = TestUtils.checkMethod("EmployeRepository", "findByNomOrPrenomAllIgnoreCase", TestUtils.LIST);
+            Method m = TestUtils.checkMethod("EmployeRepository", "findEmployePlusRiches", TestUtils.LIST);
             Assertions.assertThat(m.isAnnotationPresent(Query.class)).isTrue();
             Assertions.assertThat(m.getAnnotation(Query.class).value()).isEqualToIgnoringCase("SELECT * FROM Employe WHERE salaire > (SELECT avg(e2.salaire) FROM Employe e2)");
             Assertions.assertThat(m.getAnnotation(Query.class).nativeQuery()).isTrue();
