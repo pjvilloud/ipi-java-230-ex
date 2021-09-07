@@ -2,7 +2,7 @@ package com.ipiecoles.java.java230.repository;
 
 import com.ipiecoles.java.java230.utils.TestUtils;
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.data.jpa.repository.Query;
 
 import java.lang.reflect.Method;

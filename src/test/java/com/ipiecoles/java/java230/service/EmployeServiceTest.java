@@ -6,21 +6,17 @@ import com.ipiecoles.java.java230.repository.EmployeRepository;
 import com.ipiecoles.java.java230.utils.TestUtils;
 import org.assertj.core.api.Assertions;
 import org.joda.time.LocalDate;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.lang.reflect.Field;
 
-import static org.junit.Assert.*;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class EmployeServiceTest {
 
@@ -88,7 +84,7 @@ public class EmployeServiceTest {
         employeService.deleteEmploye(c.getId());
 
         //Then
-        Assertions.assertThatThrownBy(() -> { employeService.findById(c.getId()); }).isInstanceOf(EntityNotFoundException.class);
+        Assertions.assertThatThrownBy(() -> employeService.findById(c.getId())).isInstanceOf(EntityNotFoundException.class);
 
     }
 

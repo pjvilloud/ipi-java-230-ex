@@ -2,7 +2,7 @@ package com.ipiecoles.java.java230.model;
 
 import com.ipiecoles.java.java230.utils.TestUtils;
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.persistence.*;
 import java.lang.reflect.Field;
