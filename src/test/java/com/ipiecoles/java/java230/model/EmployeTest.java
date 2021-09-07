@@ -2,7 +2,7 @@ package com.ipiecoles.java.java230.model;
 
 import com.ipiecoles.java.java230.utils.TestUtils;
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import javax.persistence.*;
 import java.lang.reflect.Field;
@@ -20,7 +20,7 @@ public class EmployeTest {
         Field field = TestUtils.checkPrivateField("Employe", "id", TestUtils.LONG);
         Assertions.assertThat(field.isAnnotationPresent(Id.class)).isTrue();
         Assertions.assertThat(field.isAnnotationPresent(GeneratedValue.class)).isTrue();
-        Assertions.assertThat(field.getAnnotation(GeneratedValue.class).strategy()).isEqualTo(GenerationType.AUTO);
+        Assertions.assertThat(field.getAnnotation(GeneratedValue.class).strategy()).isEqualTo(GenerationType.IDENTITY);
     }
 
     @Test
