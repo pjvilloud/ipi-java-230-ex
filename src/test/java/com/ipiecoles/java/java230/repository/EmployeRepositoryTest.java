@@ -12,7 +12,7 @@ public class EmployeRepositoryTest {
     @Test
     public void exo201testCrudRepository() throws Exception {
         // 2.1. Créer l'interface EmployeRepository et la faire implémenter CrudRepository
-        TestUtils.checkImplementInterface("EmployeRepository", "CrudRepository");
+        TestUtils.checkImplementInterface("EmployeRepository", "JpaRepository");
     }
 
     @Test
